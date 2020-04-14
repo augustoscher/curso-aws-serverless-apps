@@ -34,5 +34,12 @@ aws lambda update-function-code \
   --publish \
   | tee logs/lambda-update.log
 
+# Invoke function again
 
+#7. Remove lambda
+aws lambda delete-function \
+  --function-name lambda-without-framework
 
+#8. Remove IAM role
+aws iam delete-role \
+  --role-name lambda-without-framework
