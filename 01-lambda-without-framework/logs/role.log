@@ -1,0 +1,21 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "lambda-without-framework",
+        "RoleId": "AROA372UDCVPD5VMKAV66",
+        "Arn": "arn:aws:iam::824273212766:role/lambda-without-framework",
+        "CreateDate": "2020-04-14T02:17:46Z",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "lambda.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "FunctionName": "lambda-without-framework",
+    "FunctionArn": "arn:aws:lambda:us-east-1:824273212766:function:lambda-without-framework",
+    "Runtime": "nodejs12.x",
+    "Role": "arn:aws:iam::824273212766:role/lambda-without-framework",
+    "Handler": "index.handler",
+    "CodeSize": 322,
+    "Description": "",
+    "Timeout": 3,
+    "MemorySize": 128,
+    "LastModified": "2020-04-14T02:35:51.246+0000",
+    "CodeSha256": "avFM+DAapbKvkRV0VbcG+LMP75veUpYu+NCShC9TXsM=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "ca56cafe-81a3-4206-bbfe-ef4670ac257f"
+}
