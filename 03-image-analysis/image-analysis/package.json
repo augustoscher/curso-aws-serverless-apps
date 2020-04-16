@@ -1,0 +1,9 @@
+{
+  "name": "image-analysis",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.656.0"
+  }
+}
