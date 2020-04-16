@@ -27,11 +27,18 @@ class Handler {
       Text: text
     }
 
-    return await this.translatorSvc.translateText(params).promise();
+    const { TranslatedText } = await this.translatorSvc.translateText(params).promise();
+    return TranslatedText.split(' e ');
   }
 
   formatTextResults(texts, workingItems) {
-    
+    const finalText = [];
+    for (const indexText in texts) {
+      const nameInPortuguese = texts[indexText];
+      const confidence = workingItems[indexText].Confidence;
+      finalText.push(`${confidence.toFixed(2)}% - ${nameInPortuguese}`)
+    }
+    return finalText.join('\n');
   }
 
   async main(event) {
@@ -41,12 +48,15 @@ class Handler {
       const { names, workingItems } = await this.detectImageLabels(imgBuffer);
 
       console.log('Translate to portuguese...');
-      const translatedText = await this.translateText(names);
+      const translatedTexts = await this.translateText(names);
 
-      console.log('Handling final object...')
+      console.log('Handling final object...');
+      const finalText = this.formatTextResults(translatedTexts, workingItems);
+
+      console.log('finishing...')
       return {
         statusCode: 200,
-        body: 'Hi'
+        body: `A imagem tem\n`.concat(finalText)
       }
     } catch (error) {
       console.log('Error: ', error.stack);
