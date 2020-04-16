@@ -30,6 +30,10 @@ class Handler {
     return await this.translatorSvc.translateText(params).promise();
   }
 
+  formatTextResults(texts, workingItems) {
+    
+  }
+
   async main(event) {
     try {
       const imgBuffer = await readFile('./images/teste.jpeg');
