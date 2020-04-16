@@ -1,18 +1,31 @@
 'use strict';
 
-module.exports.main = async event => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+class Handler {
+  constructor({ rekoSvc }){
+    this.rekoSvc = rekoSvc
+  }
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
-};
+  async main(event) {
+    try {
+      return {
+        statusCode: 200,
+        body: 'Hi'
+      }
+    } catch (error) {
+      console.log('Error: ', error.stack);
+      return {
+        statusCode: 500,
+        body: 'Internal Server Error'
+      }
+    }
+  }
+}
+
+const aws = require('aws-sdk');
+const reko = aws.Rekognition();
+
+const handler = new Handler({
+  rekoSvc = reko
+});
+
+module.exports.main = handler.main.bind(handler)
