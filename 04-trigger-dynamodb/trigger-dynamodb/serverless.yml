@@ -4,6 +4,35 @@ service: trigger-dynamodb
 provider:
   name: aws
   runtime: nodejs12.x
+  environment:
+    DYNAMODB_TABLE: Heroes
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:UpdateItem
+        - dynamodb:PutItem
+      Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+resources:
+  Resources:
+    HeroesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}"
+        AttrubutesDefinitions:
+          - AttributeName: id
+            AttrinuteType: S
+          - AttributeName: name
+            AttrinuteType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: name
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
 
 
 functions:
