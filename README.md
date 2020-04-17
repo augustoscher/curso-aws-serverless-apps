@@ -3,7 +3,7 @@ Serverless Apps with AWS - Ew.IT
 
 ## Testing
 
-### Rekognition
+### Image Analysis with Rekognition 
 ![alt text](https://www.cachorroamigo.com/wp-content/uploads/2019/05/curiosidades-labrador-cachorroamigo-2-1200x900.jpg)
 GET https://drqa3kqxm2.execute-api.us-east-1.amazonaws.com/dev/analyse?imageUrl=https://www.cachorroamigo.com/wp-content/uploads/2019/05/curiosidades-labrador-cachorroamigo-2-1200x900.jpg
 
