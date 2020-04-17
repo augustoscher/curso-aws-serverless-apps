@@ -1,5 +1,18 @@
 class Handler {
-  async main() {
+  constructor({ dynamoDbSvc }) {
+    this.dynamoDbSvc = dynamoDbSvc;
+    this.dynamoDbTable = process.env.DYNAMODB_TABLE;
+  }
+
+  prepareData(data) {
+    const params = {
+      
+    }
+  }
+
+  async main(event) {
+    const data = JSON.parse(event.body);
+
     try {
       return {
         statusCode: 200,
@@ -15,5 +28,10 @@ class Handler {
   }
 }
 
-const handler = new Handler();
+const aws = require('aws-sdk');
+const dynamoDB = new aws.DynamoDB.DocumentClient();
+
+const handler = new Handler({
+  dynamoDbSvc: dynamoDB
+});
 module.exports = handler.main.bind(handler);
