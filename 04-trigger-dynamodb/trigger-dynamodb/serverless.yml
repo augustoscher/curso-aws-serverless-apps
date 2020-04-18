@@ -19,12 +19,12 @@ resources:
     HeroesTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}"
-        AttrubutesDefinitions:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        AttributeDefinitions:
           - AttributeName: id
-            AttrinuteType: S
+            AttributeType: S
           - AttributeName: name
-            AttrinuteType: S
+            AttributeType: S
         KeySchema:
           - AttributeName: id
             KeyType: HASH

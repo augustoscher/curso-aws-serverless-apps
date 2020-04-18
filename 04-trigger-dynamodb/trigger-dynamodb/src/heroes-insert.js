@@ -1,5 +1,4 @@
-const uuid = require('uuid');
-
+const uuid = require('uuid')
 class Handler {
   constructor({ dynamoDbSvc }) {
     this.dynamoDbSvc = dynamoDbSvc;

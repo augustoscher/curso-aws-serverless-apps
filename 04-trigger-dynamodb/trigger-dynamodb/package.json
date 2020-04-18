@@ -1,0 +1,16 @@
+{
+  "name": "trigger-dynamodb",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.658.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "invoke-local": "sls invoke local -f hero-insert --path requests-mock/hero.insert.json",
+    "invoke": "sls invoke  -f hero-insert --path requests-mock/hero.insert.json",
+    "invoke-trigger": "sls invoke local -f hero-trigger --path requests-mock/hero.trigger.json"
+  }
+}
