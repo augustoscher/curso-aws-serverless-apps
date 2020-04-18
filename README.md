@@ -18,3 +18,12 @@ A imagem tem
 92.08% - Golden Retriever
 87.32% - Labrador Retriever
 ```
+
+### Lambda and DynamoDB
+POST https://p2epz960ej.execute-api.us-east-1.amazonaws.com/dev/heroes
+payload:
+```json
+{
+  "body": { "name": "Iron Man", "power": "Money" }
+}
+```
