@@ -1,0 +1,40 @@
+{
+  "Records": [
+      {
+          "eventID": "10c84cc2c06516ad58f909e90419f497",
+          "eventName": "INSERT",
+          "eventVersion": "1.1",
+          "eventSource": "aws:dynamodb",
+          "awsRegion": "us-east-1",
+          "dynamodb": {
+              "ApproximateCreationDateTime": 1587236465,
+              "Keys": {
+                  "name": {
+                      "S": "Iron Man"
+                  },
+                  "id": {
+                      "S": "f45d7060-81a6-11ea-823a-81453d5ad37c"
+                  }
+              },
+              "NewImage": {
+                  "createdAt": {
+                      "S": "2020-04-18T19:01:05.254Z"
+                  },
+                  "name": {
+                      "S": "Iron Man"
+                  },
+                  "id": {
+                      "S": "f45d7060-81a6-11ea-823a-81453d5ad37c"
+                  },
+                  "power": {
+                      "S": "Money"
+                  }
+              },
+              "SequenceNumber": "456700000000060044022184",
+              "SizeBytes": 143,
+              "StreamViewType": "NEW_AND_OLD_IMAGES"
+          },
+          "eventSourceARN": "arn:aws:dynamodb:us-east-1:824273212766:table/Heroes/stream/2020-04-18T18:41:03.513"
+      }
+  ]
+}
