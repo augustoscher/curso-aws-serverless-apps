@@ -1,3 +1,5 @@
+const uuid = require('uuid');
+
 class Handler {
   constructor({ dynamoDbSvc }) {
     this.dynamoDbSvc = dynamoDbSvc;
@@ -6,14 +8,26 @@ class Handler {
 
   prepareData(data) {
     const params = {
-      
+      TableName: this.dynamoDbTable,
+      Item: {
+        ...data,
+        id: uuid.v1(),
+        createdAt: new Date().toISOString()
+      }
     }
+    return params;
+  }
+
+  async insertItem(params) {
+    return this.dynamoDbSvc.put(params).promise();
   }
 
   async main(event) {
-    const data = JSON.parse(event.body);
-
     try {
+      const data = JSON.parse(event.body);
+      const dbParams = this.prepareData(data);
+      await this.insertItem(dbParams);
+
       return {
         statusCode: 200,
         body: "ok",
