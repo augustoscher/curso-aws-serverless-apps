@@ -18,6 +18,23 @@ class Handler {
     return params;
   }
 
+  handlerSuccess(data) {
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(data)
+    }
+    return response
+  }
+
+  handlerError(data) {
+    const response = {
+      statusCode: data.statusCode || 501,
+      header: {'Content-Type': 'text/plain'},
+      body: 'Couldn\'t create item.'
+    }
+    return response
+  }
+
   async insertItem(params) {
     return this.dynamoDbSvc.put(params).promise();
   }
@@ -27,17 +44,10 @@ class Handler {
       const data = JSON.parse(event.body);
       const dbParams = this.prepareData(data);
       await this.insertItem(dbParams);
-
-      return {
-        statusCode: 200,
-        body: "ok",
-      };
+      return this.handlerSuccess(dbParams.Item)
     } catch (error) {
-      console.log("Error: ", error.stack);
-      return {
-        statusCode: 500,
-        body: "Internal Server Error",
-      };
+      console.log("Deu ruim: ", error.stack);
+      return this.handlerError({ statusCode: 500 });
     }
   }
 }
