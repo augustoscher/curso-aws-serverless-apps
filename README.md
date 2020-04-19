@@ -1,4 +1,4 @@
-# Serverless Apps
+# AWS Serverless Apps
 Serverless Apps with AWS - Ew.IT
 
 ## Testing
