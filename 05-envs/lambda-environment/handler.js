@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports.scheduller = async event => {
+module.exports.scheduler = async event => {
   return {
     statusCode: 200,
     body: JSON.stringify(
