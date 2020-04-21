@@ -1,18 +1,15 @@
 'use strict';
 
-module.exports.scheduler = async event => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+const settings = require('./config/serverless/settings');
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
-};
+class Handler {
+  static async main(event) {
+    console.log('at ', new Date().toISOString, JSON.stringify(event, null, 2))
+
+    return {
+      statusCode: 200,
+      body: 'Oi'
+    }
+  } 
+}
+
