@@ -8,7 +8,8 @@
     "invoke-local-log": "sls invoke local -f commit-message-scheduler --logger",
     "invoke": "sls invoke  -f commit-message-scheduler",
     "deploy": "sls deploy",
-    "deploy:qa": "sls deploy --stage qa"
+    "deploy:qa": "sls deploy --stage qa",
+    "remove": "sls remove"
   },
   "dependencies": {
     "aws-sdk": "^2.659.0",
