@@ -3,6 +3,7 @@ service: lambda-environment
 provider:
   name: aws
   runtime: nodejs12.x
+  stage: ${opt:stage, "qa"}
 
 
 functions:
