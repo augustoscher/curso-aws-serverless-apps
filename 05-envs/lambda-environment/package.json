@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "invoke-local": "sls invoke local -f commit-message-scheduller",
+    "invoke-local-log": "sls invoke local -f commit-message-scheduller --logger",
     "invoke": "sls invoke  -f commit-message-scheduller"
   }
 }
