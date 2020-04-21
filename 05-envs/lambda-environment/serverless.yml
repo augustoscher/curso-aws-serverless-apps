@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   stage: ${opt:stage, "qa"}
-  environment: ${file./config/env.${self:provide.stage}}
+  environment: ${file(./config/env.${self:provider.stage}.)}
 
 
 functions:
