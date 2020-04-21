@@ -7,6 +7,9 @@ provider:
   environment: 
     ${file(./config/env.${self:provider.stage}.json)}
 
+custom:
+  schedulerRate: rate(1 minute)
+  enabled: true
 
 functions:
   commit-message-scheduller:

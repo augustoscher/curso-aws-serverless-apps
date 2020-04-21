@@ -1,7 +1,7 @@
 {
   "name": "lambda-environment",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "handler.js",
   "license": "MIT",
   "scripts": {
     "invoke-local": "sls invoke local -f commit-message-scheduller",
