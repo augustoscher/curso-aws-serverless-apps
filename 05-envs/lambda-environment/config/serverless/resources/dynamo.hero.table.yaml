@@ -15,5 +15,3 @@ Table:
     ProvisionedThroughput:
       ReadCapacityUnits: ${self:custom.dbReadCapacityUnits}
       WriteCapacityUnits: ${self:custom.dbWriteCapacityUnits}
-    StreamSpecification:
-      StreamViewType: NEW_AND_OLD_IMAGES

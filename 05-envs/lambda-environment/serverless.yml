@@ -17,7 +17,7 @@ custom:
   dbReadCapacityUnits: ${self:provider.environment.DbReadCapacityUnits}
 
 resources:
-  Resource:
+  Resources:
     ${file(./config/serverless/resources/dynamo.hero.table.yaml)}:
 
 functions:

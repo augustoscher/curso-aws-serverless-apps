@@ -6,6 +6,8 @@
   "scripts": {
     "invoke-local": "sls invoke local -f commit-message-scheduler",
     "invoke-local-log": "sls invoke local -f commit-message-scheduler --logger",
-    "invoke": "sls invoke  -f commit-message-scheduler"
+    "invoke": "sls invoke  -f commit-message-scheduler",
+    "deploy": "sls deploy",
+    "deploy:qa": "sls deploy --stage qa"
   }
 }
