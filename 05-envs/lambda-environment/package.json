@@ -9,5 +9,11 @@
     "invoke": "sls invoke  -f commit-message-scheduler",
     "deploy": "sls deploy",
     "deploy:qa": "sls deploy --stage qa"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.659.0",
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "env-var": "^6.1.0"
   }
 }
