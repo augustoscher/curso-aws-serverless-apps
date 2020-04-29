@@ -15,8 +15,8 @@ exclude:
   - ./mock/
 
 functions:
-  hello:
-    handler: handler.hello
+  mememaker:
+    handler: app/handler.mememaker
     layers:
       - {Ref: GmLibraryLambdaLayer}
     events:

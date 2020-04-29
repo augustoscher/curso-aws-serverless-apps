@@ -1,0 +1,10 @@
+{
+  "name": "mememaker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "invoke-docker": "sls local -f mememaker --docker --logger",
+    "invoke-local-docker": "sls invoke local -f mememaker --docker --logger"
+  },
+  "license": "MIT"
+}
