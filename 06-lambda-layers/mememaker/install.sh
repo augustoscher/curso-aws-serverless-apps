@@ -15,8 +15,7 @@ sudo chown augusto.scher -R dependencies
 # zip dependencies folder
 cd dependencies
 zip -yr ../dependencies.zip .
-sudo chown augusto.scher -R dependencies.zip
-
-rm -rf dependencies
 cd ..
+sudo chown augusto.scher -R dependencies.zip
+sudo rm -rf dependencies
 
