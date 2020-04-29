@@ -10,10 +10,13 @@ docker run --rm \
 
 
 # Change ownership of folders
-sudo chown -R dependencies
+sudo chown augusto.scher -R dependencies
 
 # zip dependencies folder
 cd dependencies
 zip -yr ../dependencies.zip .
+sudo chown augusto.scher -R dependencies.zip
+
+rm -rf dependencies
 cd ..
 
