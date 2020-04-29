@@ -9,7 +9,7 @@ class Handler {
 
   async main(event) {
     const response = await shell(
-      'gm identify --verbose ./resources/img/homer.jpg'
+      `gm identify -verbose ${__dirname}./resources/homer.jpg`
     )
     console.log({ response })
     try {

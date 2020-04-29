@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "invoke-docker": "sls local -f mememaker --docker --logger",
-    "invoke-local-docker": "sls invoke local -f mememaker --docker --logger"
+    "invoke-local": "sls invoke local -f mememaker --docker --logger",
+    "invoke": "sls invoke -f mememaker --logger --path mocks/request.json"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    
+  }
 }
