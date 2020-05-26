@@ -1,4 +1,4 @@
-gm identify -verbose ./app/resources/homer.jpg
+# gm identify -verbose ./app/resources/homer.jpg
 
 gm convert \
     ./app/resources/homer.jpg \
