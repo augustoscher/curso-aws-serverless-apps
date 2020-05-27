@@ -2,6 +2,10 @@
   "name": "tooling-s3-sqs",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon --exec npm run offline",
+    "offline": "npx sls offline start --host 0.0.0.0"
+  },
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.4",
