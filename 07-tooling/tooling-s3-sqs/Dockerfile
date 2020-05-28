@@ -2,10 +2,10 @@ FROM lambci/lambda:build-nodejs12.x
 
 WORKDIR /src/
 
-COPY package.json package-lock.json yarn.lock /src/
+COPY package.json package-lock.json /src/
 
-RUN yarn ci --silent
+RUN npm ci
 
 COPY . .
 
-CMD yarn start
+CMD npm start

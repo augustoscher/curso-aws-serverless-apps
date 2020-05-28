@@ -5,7 +5,7 @@ module.exports.hello = async event => {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: 'Hello!',
+        message: 'Helloooo docker live reload!',
         input: event,
       },
       null,

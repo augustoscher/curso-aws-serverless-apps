@@ -12,3 +12,6 @@ yarn test
 
 # Running docker-compose for localstack
 docker-compose up -d localstack
+
+# Building docker-compose
+docker-compose up --build
