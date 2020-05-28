@@ -11,6 +11,10 @@
   "devDependencies": {
     "nodemon": "^2.0.4",
     "serverless": "^1.71.3",
+    "serverless-localstack": "^0.4.24",
     "serverless-offline": "^6.1.7"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.685.0"
   }
 }
