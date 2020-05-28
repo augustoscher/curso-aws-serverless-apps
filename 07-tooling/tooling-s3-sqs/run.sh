@@ -9,3 +9,6 @@ curl http://localhost:3000/dev/hello
 # Creating and Run test
 sls create test -f hello
 yarn test
+
+# Running docker-compose for localstack
+docker-compose up -d localstack
