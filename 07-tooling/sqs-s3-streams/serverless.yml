@@ -1,0 +1,28 @@
+service: tooling-s3-sqs
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+plugins:
+  - serverless-localstack
+  - serverless-mocha-plugin
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    useChildProcesses: true
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+

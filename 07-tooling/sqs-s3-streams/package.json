@@ -1,0 +1,21 @@
+{
+  "name": "tooling-s3-sqs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx sls invoke test --path test",
+    "start": "npx nodemon --exec npm run offline",
+    "offline": "npx sls offline start --host 0.0.0.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "serverless": "^1.71.3",
+    "serverless-localstack": "^0.4.24",
+    "serverless-mocha-plugin": "^1.12.0",
+    "serverless-offline": "^6.2.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.685.0"
+  }
+}
