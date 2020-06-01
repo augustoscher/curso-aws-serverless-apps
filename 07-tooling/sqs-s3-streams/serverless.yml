@@ -12,6 +12,14 @@ provider:
   environment:
     BUCKET_NAME: arquivos-augusto-001
     SQS_QUEUE: file-handler
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - sqs:SendMessage
+        - sqs:GetQueueUrl
+        - sqs:CreateQueue
+        - sqs:ReceiveMessage
+      Resource: ${self:custom.sqsArn}
 
 plugins:
   - serverless-localstack
@@ -47,13 +55,12 @@ functions:
             - suffix: .csv
 
   sqslistener:
-    handler: src/.s3listener
+    handler: src/.sqslistener
     events:
-      - s3:
-          bucket: ${self.provider.environment.BUCKET_NAME}
-          event: s3:ObjectCreated:*
-          rules:
-            - suffix: .csv
+      - sqs: 1
+          # qtas lambdas serão scheduladas para cada msg
+          batchSize: 1
+          arn: ${self:custom.sqsArn}
 
 resources:
   Resource:
