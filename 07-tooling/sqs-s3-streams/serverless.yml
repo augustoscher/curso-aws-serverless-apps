@@ -8,6 +8,10 @@ service: tooling-s3-sqs
 provider:
   name: aws
   runtime: nodejs12.x
+  stage: ${opt:stage, "dev"}
+  environment:
+    BUCKET_NAME: arquivos-augusto-001
+    SQS_QUEUE: file-handler
 
 plugins:
   - serverless-localstack
@@ -15,6 +19,11 @@ plugins:
   - serverless-offline
 
 custom:
+  sqsArn:
+    Fn::GetAtt:
+      - SQSQueue
+      - Arn
+
   localstack:
     stages:
       - local
@@ -23,11 +32,34 @@ custom:
   serverless-offline:
     useChildProcesses: true
 
+package:
+  individually: true
+  excludeDevDependencies: true
+
 functions:
-  hello:
-    handler: handler.hello
+  s3listener:
+    handler: src/.s3listener
     events:
-      - http:
-          path: hello
-          method: get
+      - s3:
+          bucket: ${self.provider.environment.BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv
+
+  sqslistener:
+    handler: src/.s3listener
+    events:
+      - s3:
+          bucket: ${self.provider.environment.BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv
+
+resources:
+  Resource:
+    SQSQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self.provider.environment.SQS_QUEUE}
+        VisibilityTimeout: 60
 
