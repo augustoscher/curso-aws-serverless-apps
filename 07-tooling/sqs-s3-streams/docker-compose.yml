@@ -12,6 +12,7 @@ services:
     environment:
       - SERVICES=s3,sqs
       - LAMBDA_EXECUTOR=local
+      - LAMBDA_REMOTE_DOCKER=false
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"

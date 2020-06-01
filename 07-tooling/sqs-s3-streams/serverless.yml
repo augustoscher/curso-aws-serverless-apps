@@ -15,6 +15,11 @@ plugins:
   - serverless-offline
 
 custom:
+  localstack:
+    stages:
+      - local
+    #desabilitar quando fizer o deploy
+    autostart: false
   serverless-offline:
     useChildProcesses: true
 
