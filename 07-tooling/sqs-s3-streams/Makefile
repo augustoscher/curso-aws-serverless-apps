@@ -5,8 +5,13 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36mmake %-20s\033[0m\n\t%s\n", $$1, $$2}'
 
 run: stop  ## starts the application
-	docker-compose up -d localstack
+	docker-compose up -d
 	@echo "Localstack running: http://localhost:8080"
+	@echo "App running: http://localhost:3000"
+
+run-app: stop
+	docker-compose up -d app
+	@echo "App running: http://localhost:3000"
 
 stop:  ## stops the application
 	docker-compose down
