@@ -20,10 +20,15 @@ provider:
         - sqs:CreateQueue
         - sqs:ReceiveMessage
       Resource: ${self:custom.sqsArn}
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: 
+        - arn:aws:s3:::${self:provider.environment.BUCKET_NAME}/*
+        - arn:aws:s3:::${self:provider.environment.BUCKET_NAME}
 
 plugins:
   - serverless-localstack
-  - serverless-mocha-plugin
   - serverless-offline
 
 custom:
@@ -49,7 +54,7 @@ functions:
     handler: src/.s3listener
     events:
       - s3:
-          bucket: ${self.provider.environment.BUCKET_NAME}
+          bucket: ${self:provider.environment.BUCKET_NAME}
           event: s3:ObjectCreated:*
           rules:
             - suffix: .csv
@@ -57,8 +62,7 @@ functions:
   sqslistener:
     handler: src/.sqslistener
     events:
-      - sqs: 1
-          # qtas lambdas serão scheduladas para cada msg
+      - sqs:
           batchSize: 1
           arn: ${self:custom.sqsArn}
 
@@ -67,6 +71,6 @@ resources:
     SQSQueue:
       Type: AWS::SQS::Queue
       Properties:
-        QueueName: ${self.provider.environment.SQS_QUEUE}
+        QueueName: ${self:provider.environment.SQS_QUEUE}
         VisibilityTimeout: 60
 

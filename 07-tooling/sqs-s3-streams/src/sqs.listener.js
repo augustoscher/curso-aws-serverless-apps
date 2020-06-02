@@ -3,7 +3,7 @@ class Handler {
     try{
       return {
         statusCode: 200,
-        body: 'Hello'
+        body: 'Sqs'
       }
 
     } catch(e) {
