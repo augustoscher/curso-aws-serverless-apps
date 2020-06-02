@@ -67,7 +67,7 @@ functions:
           arn: ${self:custom.sqsArn}
 
 resources:
-  Resource:
+  Resources:
     SQSQueue:
       Type: AWS::SQS::Queue
       Properties:
