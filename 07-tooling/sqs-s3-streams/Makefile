@@ -9,6 +9,11 @@ run: stop  ## starts the application
 	@echo "Localstack running: http://localhost:8080"
 	@echo "App running: http://localhost:3000"
 
+run-logs: stop  ## starts the application
+	docker-compose up -d && docker-compose logs -f -t
+	@echo "Localstack running: http://localhost:8080"
+	@echo "App running: http://localhost:3000"
+
 run-app: stop
 	docker-compose up -d app
 	@echo "App running: http://localhost:3000"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ./upload-file.sh my-bucket /home/augusto.scher/git/rep/curso-aws-serverless-apps/07-tooling/tooling-s3-sqs/scripts/s3/test.txtupload: ./test.txt to s3://my-bucket/test.txt
+# ./upload-file.sh my-bucket /home/augusto.scher/git/rep/curso-aws-serverless-apps/07-tooling/sqs-s3-streams/scripts/s3/test.txt
 
 # Upload file to existing bucket
 BUCKET_NAME=$1
