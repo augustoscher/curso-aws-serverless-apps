@@ -1,3 +1,4 @@
+// When S3 csv file is posted, this lambda will be called
 class Handler {
   async main(event) {
     try{
