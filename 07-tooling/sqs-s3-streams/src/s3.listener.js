@@ -1,6 +1,7 @@
 // When S3 csv file is posted, this lambda will be called
 const AWS = require('aws-sdk');
 const { Writable, pipeline } = require('stream');
+const csvtojson = require('csvtojson');
 
 class Handler {
 
@@ -86,6 +87,7 @@ class Handler {
 
       this.s3Svc.getObject({ Bucket: name, Key: key })
         .createReadStream()
+        .pipe(csvtojson())
         .pipe(this.processDataOnDemand(queueUrl))
 
       return {

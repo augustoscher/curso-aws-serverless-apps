@@ -1,6 +1,6 @@
-name;age;sex
-augusto;29;male
-dani;28;female
-carlos;65;male
-nelsi;55;female
-batman;100;male
+name,age,sex
+augusto,29,male
+dani,28,female
+carlos,65,male
+nelsi,55,female
+batman,100,male
