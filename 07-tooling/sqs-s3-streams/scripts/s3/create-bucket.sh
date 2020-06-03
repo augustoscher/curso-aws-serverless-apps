@@ -11,3 +11,7 @@ aws  \
 aws  \
   s3 ls \
   --endpoint-url=http://localhost:4572
+
+aws  \
+  s3 ls $BUCKET_NAME \
+  --endpoint-url=http://localhost:4572

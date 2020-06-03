@@ -14,7 +14,7 @@ class Handler {
     const s3Port = process.env.S3_PORT || "4572";
     const sqsPort = process.env.SQS_PORT || "4576";
     const isLocal = process.env.IS_LOCAL;
-    const s3Endpoint = new AWS.Endpoint(`http:${host}:${s3Port}`);
+    const s3Endpoint = new AWS.Endpoint(`http://${host}:${s3Port}`);
     const sqsEndpoint = new AWS.Endpoint(`http://${host}:${sqsPort}`);
 
     const s3Config = {
@@ -63,6 +63,10 @@ class Handler {
       
       
       this.s3Svc.getObject({ Bucket: name, Key: key })
+        .createReadStream()
+        .on("data", msg => console.log('on data: ', msg.toString()))
+        .on("error", msg => console.log('on error: ', msg.toString()))
+        .on("close", msg => console.log('on close: ', msg.toString()))
 
 
 

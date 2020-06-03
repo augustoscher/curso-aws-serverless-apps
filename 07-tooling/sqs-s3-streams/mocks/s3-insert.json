@@ -27,7 +27,7 @@
           "arn": "arn:aws:s3:::arquivos-augusto-001"
         },
         "object": {
-          "key": "file3.csv",
+          "key": "file.csv",
           "size": 28,
           "eTag": "1475749b3af7a32c24ca00c9d2c5ab3a",
           "sequencer": "005ED5C0615A3A5927"
