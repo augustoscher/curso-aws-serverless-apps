@@ -6,6 +6,7 @@ class Handler {
   constructor({ s3Svc, sqsSvc }) {
     this.s3Svc = s3Svc;
     this.sqsSvc = sqsSvc;
+    this.queueName = process.env.SQS_QUEUE;
   }
 
   static getSdks() {
@@ -14,17 +15,17 @@ class Handler {
     const sqsPort = process.env.SQS_PORT || "4576";
     const isLocal = process.env.IS_LOCAL;
     const s3Endpoint = new AWS.Endpoint(`http:${host}:${s3Port}`);
-    const sqsEndpoint = new AWS.Endpoint(`http:${host}:${sqsPort}`);
+    const sqsEndpoint = new AWS.Endpoint(`http://${host}:${sqsPort}`);
 
     const s3Config = {
       endpoint: s3Endpoint,
       s3ForcePathStyle: true
     }
-
+    
     const sqsConfig = {
       endpoint: sqsEndpoint,
     }
-
+    
     if (!isLocal) {
       delete s3Config.endpoint;
       delete sqsConfig.endpoint;
@@ -36,9 +37,29 @@ class Handler {
     }
   }
 
+  async getQueueUrl() {
+    const { QueueUrl } = await this.sqsSvc.getQueueUrl({
+      QueueName: this.queueName 
+    }).promise();
+    return QueueUrl;
+  }
+
   async main(event) {
-    console.log('**s3 event: ', JSON.stringify(event, null, 2))
-    try{
+    // console.log('**s3 event: ', JSON.stringify(event, null, 2));
+    const [
+      {
+        s3: {
+          bucket: { name },
+          object: { key },
+        },
+      },
+    ] = event.Records;
+
+    console.log('processing: ', name, key)
+
+    try {
+      const queueUrl = await this.getQueueUrl();
+      console.log('queue: ', queueUrl);
       return {
         statusCode: 200,
         body: 'S3 oi'
