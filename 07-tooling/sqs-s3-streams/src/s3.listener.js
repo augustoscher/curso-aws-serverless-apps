@@ -1,5 +1,6 @@
 // When S3 csv file is posted, this lambda will be called
 const AWS = require('aws-sdk');
+const { Writable, pipeline } = require('stream');
 
 class Handler {
 
@@ -57,7 +58,14 @@ class Handler {
   }
 
   processDataOnDemand(queueUrl) {
-
+    const writableStream = new Writable({
+      write: (chunk, encoding, done) => {
+        const item = chunk.toString()
+        console.log('received: ', item);
+        done()
+      }
+    });
+    return writableStream;
   }
 
   async main(event) {
