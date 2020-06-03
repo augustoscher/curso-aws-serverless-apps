@@ -3,6 +3,9 @@ const AWS = require('aws-sdk');
 const { Writable, pipeline } = require('stream');
 const csvtojson = require('csvtojson');
 
+// Quando um arquivo csv é adicionado no bucket, utilizamos streams para converter
+// o arquivo para JSON e item a item adicioná-lo na fila do SQS
+
 class Handler {
   constructor({ s3Svc, sqsSvc }) {
     this.s3Svc = s3Svc;
