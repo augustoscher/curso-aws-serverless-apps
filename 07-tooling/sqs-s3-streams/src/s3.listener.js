@@ -58,8 +58,14 @@ class Handler {
     console.log('processing: ', name, key)
 
     try {
+      console.log('geting queueURL...')
       const queueUrl = await this.getQueueUrl();
-      console.log('queue: ', queueUrl);
+      
+      
+      this.s3Svc.getObject({ Bucket: name, Key: key })
+
+
+
       return {
         statusCode: 200,
         body: 'S3 oi'
