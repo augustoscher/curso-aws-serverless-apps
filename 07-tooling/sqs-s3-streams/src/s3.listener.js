@@ -88,12 +88,10 @@ class Handler {
   }
 
   async main(event) {
-    // console.log('**s3 event: ', JSON.stringify(event, null, 2));
     const { name, key } = this.getParamsFromEvent(event);
     console.log("processing: ", name, key);
 
     try {
-      console.log("geting queueURL...");
       const queueUrl = await this.getQueueUrl();
 
       //desta forma, o processo que ocasionar o erro primeiro, ja para a execução
