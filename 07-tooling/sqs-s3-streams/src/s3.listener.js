@@ -41,7 +41,7 @@ class Handler {
     try{
       return {
         statusCode: 200,
-        body: 'S3'
+        body: 'S3 oi'
       }
 
     } catch(e) {
