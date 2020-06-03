@@ -44,8 +44,7 @@ class Handler {
     return QueueUrl;
   }
 
-  async main(event) {
-    // console.log('**s3 event: ', JSON.stringify(event, null, 2));
+  getParamsFromEvent(event) {
     const [
       {
         s3: {
@@ -54,19 +53,28 @@ class Handler {
         },
       },
     ] = event.Records;
+    return { name, key };
+  }
 
+  processDataOnDemand(queueUrl) {
+
+  }
+
+  async main(event) {
+    // console.log('**s3 event: ', JSON.stringify(event, null, 2));
+    const { name, key } = this.getParamsFromEvent(event);
     console.log('processing: ', name, key)
 
     try {
       console.log('geting queueURL...')
       const queueUrl = await this.getQueueUrl();
       
-      
       this.s3Svc.getObject({ Bucket: name, Key: key })
         .createReadStream()
         .on("data", msg => console.log('on data: ', msg.toString()))
         .on("error", msg => console.log('on error: ', msg.toString()))
         .on("close", msg => console.log('on close: ', msg.toString()))
+        .on("finish", msg => console.log('on finish'))
 
 
 
