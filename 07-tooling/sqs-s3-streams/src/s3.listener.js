@@ -77,14 +77,16 @@ class Handler {
       console.log('geting queueURL...')
       const queueUrl = await this.getQueueUrl();
       
+      // this.s3Svc.getObject({ Bucket: name, Key: key })
+      //   .createReadStream()
+      //   .on("data", msg => console.log('on data: ', msg.toString()))
+      //   .on("error", msg => console.log('on error: ', msg.toString()))
+      //   .on("close", msg => console.log('on close: ', msg.toString()))
+      //   .on("finish", msg => console.log('on finish'))
+
       this.s3Svc.getObject({ Bucket: name, Key: key })
         .createReadStream()
-        .on("data", msg => console.log('on data: ', msg.toString()))
-        .on("error", msg => console.log('on error: ', msg.toString()))
-        .on("close", msg => console.log('on close: ', msg.toString()))
-        .on("finish", msg => console.log('on finish'))
-
-
+        .pipe(this.processDataOnDemand(queueUrl))
 
       return {
         statusCode: 200,
