@@ -2,6 +2,12 @@
 const AWS = require('aws-sdk');
 
 class Handler {
+
+  constructor({ s3Svc, sqsSvc }) {
+    this.s3Svc = s3Svc;
+    this.sqsSvc = sqsSvc;
+  }
+
   static getSdks() {
     const host = process.env.LOCALSTACK_HOST || "localhost";
     const s3Port = process.env.S3_PORT || "4572";
@@ -18,11 +24,19 @@ class Handler {
     const sqsConfig = {
       endpoint: sqsEndpoint,
     }
+
+    if (!isLocal) {
+      delete s3Config.endpoint;
+      delete sqsConfig.endpoint;
+    }
+
+    return {
+      s3: new AWS.S3(s3Config),
+      sqs: new AWS.SQS(sqsConfig)
+    }
   }
 
   async main(event) {
-
-
     console.log('**s3 event: ', JSON.stringify(event, null, 2))
     try{
       return {
@@ -40,5 +54,9 @@ class Handler {
   }
 }
 
-const handler = new Handler();
+const { s3, sqs } = Handler.getSdks();
+const handler = new Handler({
+  sqsSvc: sqs,
+  s3Svc: s3
+});
 module.exports = handler.main.bind(handler);

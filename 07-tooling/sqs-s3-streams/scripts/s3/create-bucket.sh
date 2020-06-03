@@ -1,5 +1,5 @@
 #!/bin/bash
-# ./create-bucket.sh my-bucket
+# ./create-bucket.sh arquivos-augusto-001
 
 # Create S3 bucket
 BUCKET_NAME=$1
