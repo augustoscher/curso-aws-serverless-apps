@@ -7,7 +7,7 @@ class Handler {
 
   async main(event) {
     const { body, messageId } = this.getParamsFromEvent(event);
-    console.log("***event: ", JSON.stringify({ ...body, messageId }, null, 2))
+    console.log("***event: ", JSON.stringify({ ...body, messageId, at: new Date().toISOString() }, null, 2))
 
     try{
       return {
