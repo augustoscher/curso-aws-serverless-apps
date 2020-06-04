@@ -1,6 +1,11 @@
 #!/bin/bash
 
+# Run setup:
 # ./scripts/setup.sh arquivos-augusto-001 file-handler /home/augusto.scher/git/rep/curso-aws-serverless-apps/07-tooling/sqs-s3-streams/scripts/s3/file.csv
+# Run logs on sqs lambda
+# npm run logs:sqslistener
+# Deploy file and you will be able to see streams on logs
+# npm run invoke:s3
 
 BUCKET_NAME=$1
 QUEUE_NAME=$2
