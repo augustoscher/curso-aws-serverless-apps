@@ -8,6 +8,8 @@
     "offline": "npx sls offline start --host 0.0.0.0",
     "logs:s3listener": "npx sls logs -f s3listener -t",
     "logs:sqslistener": "npx sls logs -f sqslistener -t",
+    "invoke:sqs": "npx sls invoke -f sqslistener --path mocks/sqs-event.json",
+    "invoke:s3": "npx sls invoke -f s3listener --path mocks/s3-insert.json",
     "invoke:local:sqs": "npx sls invoke local -f sqslistener --path mocks/sqs-event.json",
     "invoke:local:s3": "npx sls invoke local -f s3listener --path mocks/s3-insert.json"
   },
