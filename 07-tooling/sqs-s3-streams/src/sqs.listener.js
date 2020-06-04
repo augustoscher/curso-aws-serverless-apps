@@ -1,6 +1,14 @@
 class Handler {
+
+  getParamsFromEvent(event) {
+    const [{ body, messageId }] = event.Records;
+    return { body: JSON.parse(body), messageId };
+  }
+
   async main(event) {
-    console.log('**sqs event: ', JSON.stringify(event, null, 2))
+    const { body, messageId } = this.getParamsFromEvent(event);
+    console.log("***event: ", JSON.stringify({ ...body, messageId }, null, 2))
+
     try{
       return {
         statusCode: 200,
