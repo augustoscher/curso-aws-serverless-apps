@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 
 function setupDynamoDB() {
   if (!process.env.IS_LOCAL)
-    return;
+    return new AWS.DynamoDB.DocumentClient();
 
   const host = process.env.LOCALSTACK_HOST;
   const port = process.env.DYNAMODB_PORT;
