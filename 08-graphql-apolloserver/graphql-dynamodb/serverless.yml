@@ -17,8 +17,8 @@ provider:
         - dynamodb:Query
         - dynamodb:DescribeTable
       Resource:  
-        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self.provider.environment.HEROES_TABLE}"
-        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self.provider.environment.SKILLS_TABLE}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.HEROES_TABLE}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.SKILLS_TABLE}"
 package:
   excludeDevDependencies: true
   individually: true
