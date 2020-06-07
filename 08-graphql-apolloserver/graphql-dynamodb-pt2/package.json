@@ -1,0 +1,19 @@
+{
+  "name": "graphql-dynamodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "IS_LOCAL=true npx nodemon --exec sls offline start --host 0.0.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "serverless": "^1.72.0",
+    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-offline": "^6.3.1"
+  }
+}

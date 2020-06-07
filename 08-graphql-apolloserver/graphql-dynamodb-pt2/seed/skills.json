@@ -1,0 +1,17 @@
+[
+  {
+    "id": "01",
+    "name": "Speed",
+    "value": 99
+  },
+  {
+    "id": "02",
+    "name": "Strength",
+    "value": 80
+  },
+  {
+    "id": "03",
+    "name": "Smartness",
+    "value": 78
+  }
+]
