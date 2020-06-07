@@ -1,5 +1,6 @@
 'use strict';
 
+const { ApolloServer, gql } = require('apollo-server-lambda');
 const AWS = require('aws-sdk');
 
 function setupDynamoDB() {
@@ -18,29 +19,28 @@ function setupDynamoDB() {
   });
 }
 
-module.exports.hello = async event => {
-
-  const dynamodb = setupDynamoDB();
-  const heroes = await dynamodb.scan({
-    TableName: process.env.HEROES_TABLE
-  }).promise();
-
-  const skills = await dynamodb.scan({
-    TableName: process.env.SKILLS_TABLE
-  }).promise()
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        heroes,
-        skills
-      },
-      null,
-      2
-    ),
-  };
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+// Construct a schema, using GraphQL schema language
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+ 
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: {
+    hello: () => 'Hello world!',
+  },
 };
+ 
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+ 
+exports.handler = server.createHandler({
+  cors: {
+    origin: '*',
+    credentials: true,
+  },
+});

@@ -54,6 +54,12 @@ functions:
       - http:
           path: hello
           method: any
+  graphql:
+    handler: handler.handler
+    events:
+      - http:
+          path: graphql
+          method: any
 
 resources:
   Resources:
