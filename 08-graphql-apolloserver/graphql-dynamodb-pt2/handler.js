@@ -65,7 +65,7 @@ async function main() {
   const hero = await heroFactory.findOne(heroId);
   console.log('Hero:', hero);
 
-  console.log('getting all heros');
-  const allHeros = await heroFactory.findAll()
-  console.log('all heros', allHeros);
+  console.log('getting all heroes');
+  const allHeroes = await heroFactory.findAll()
+  console.log('all heroes', allHeroes);
 }
