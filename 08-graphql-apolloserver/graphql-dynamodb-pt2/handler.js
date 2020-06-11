@@ -1,23 +1,12 @@
 'use strict';
 
 const { ApolloServer, gql } = require('apollo-server-lambda');
-const AWS = require('aws-sdk');
 
-function setupDynamoDB() {
-  if (!process.env.IS_LOCAL)
-    return new AWS.DynamoDB.DocumentClient();
+const setupDynamoDBClient = require('./src/core/util/setupDynamoDB');
+setupDynamoDBClient();
 
-  const host = process.env.LOCALSTACK_HOST;
-  const port = process.env.DYNAMODB_PORT;
-  console.log('running dynamodb locally! ', host, port)
-
-  return new AWS.DynamoDB.DocumentClient({
-    region: 'localhost',
-    accessKeyId: "DEFAULT_ACCESS_KEY",
-    secretAccessKey: "DEFAULT_SECRET",
-    endpoint: new AWS.Endpoint(`http://${host}:${port}`)
-  });
-}
+const HeroFactory = require('./src/core/factories/heroFactory');
+const SkillFactory = require('./src/core/factories/skillFactory');
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
@@ -44,3 +33,39 @@ exports.handler = server.createHandler({
     credentials: true,
   },
 });
+
+async function main() {
+  console.log('creating factories...');
+  const skillFactory = await SkillFactory.createInstance();
+  const heroFactory = await HeroFactory.createInstance();
+
+  console.log('insert skill item...');
+  const skillId = `${new Date().getTime()}`;
+  skillFactory.create({
+    id: skillId,
+    name: 'Mage',
+    value: 50
+  });
+
+  console.log('getting skill item');
+  const allSkills = await skillFactory.findAll()
+  console.log('all skills', allSkills);
+
+  console.log('\n-----------------\n')
+
+  console.log('insert hero item...');
+  const heroId = `${new Date().getTime()}`;
+  heroFactory.create({
+    id: heroId,
+    name: 'Doctor Strange',
+    skills: [skillId]
+  });
+
+  console.log('getting hero');
+  const hero = await heroFactory.findOne(heroId);
+  console.log('Hero:', hero);
+
+  console.log('getting all heros');
+  const allHeros = await heroFactory.findAll()
+  console.log('all heros', allHeros);
+}
