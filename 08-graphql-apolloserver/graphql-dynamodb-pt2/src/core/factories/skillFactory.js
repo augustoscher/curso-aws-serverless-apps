@@ -2,11 +2,8 @@ const SkillRepository = require('./../repositories/skillRepository');
 const SkillService = require('./../service/skillService');
 
 async function createInstance() {
-  const skillRepository = new SkillRepository();
-  const skillService = new SkillService({
-    repository: skillRepository
-  });
-  return skillService;
+  const repository = new SkillRepository();
+  return new SkillService(repository);
 }
 
 module.exports = { createInstance };

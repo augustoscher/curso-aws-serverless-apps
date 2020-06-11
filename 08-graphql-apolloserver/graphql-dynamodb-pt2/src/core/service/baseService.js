@@ -4,19 +4,15 @@ class BaseService {
   }
 
   async create(item) {
-    this.repository.create(item);
+    return this.repository.create(item);
   }
 
   async findOne(id) {
-    this.repository.findOne(id);
-  }
-
-  async findOne(id) {
-    this.repository.findOne(id);
+    return this.repository.findOne(id);
   }
 
   async findAll(query) {
-    this.repository.findAll(query);
+    return this.repository.findAll(query);
   }
 }
 
