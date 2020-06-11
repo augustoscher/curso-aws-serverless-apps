@@ -68,4 +68,19 @@ async function main() {
   console.log('getting all heroes');
   const allHeroes = await heroFactory.findAll()
   console.log('all heroes', allHeroes);
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      hero: {
+        hero,
+        allHeroes
+      },
+      skill: {
+        allSkills
+      }
+    })
+  }
 }
+
+module.exports.test = main;

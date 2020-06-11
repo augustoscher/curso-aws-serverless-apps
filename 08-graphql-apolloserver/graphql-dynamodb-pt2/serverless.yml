@@ -49,10 +49,10 @@ custom:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: handler.test
     events:
       - http:
-          path: hello
+          path: test
           method: any
   graphql:
     handler: handler.handler
