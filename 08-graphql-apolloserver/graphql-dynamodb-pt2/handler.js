@@ -41,13 +41,17 @@ async function main() {
 
   console.log('insert skill item...');
   const skillId = `${new Date().getTime()}`;
-  skillFactory.create({
+  await skillFactory.create({
     id: skillId,
     name: 'Mage',
     value: 50
   });
 
-  console.log('getting skill item');
+  console.log('getting skill');
+  const skill = await skillFactory.findOne(skillId)
+  console.log('Skill:', skill);
+
+  console.log('getting all skills');
   const allSkills = await skillFactory.findAll()
   console.log('all skills', allSkills);
 
@@ -55,7 +59,7 @@ async function main() {
 
   console.log('insert hero item...');
   const heroId = `${new Date().getTime()}`;
-  heroFactory.create({
+  await heroFactory.create({
     id: heroId,
     name: 'Doctor Strange',
     skills: [skillId]
@@ -77,6 +81,7 @@ async function main() {
         allHeroes
       },
       skill: {
+        skill,
         allSkills
       }
     })

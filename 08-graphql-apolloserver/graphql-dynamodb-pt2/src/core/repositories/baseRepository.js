@@ -11,7 +11,7 @@ class BaseRepository {
     return promisify(this.schema.create)(item)
   }
 
-  //dynamodb query: used when we have the key of desired data
+  //dynamodb query: used when we have the key (id)
   async findOne(id) {
     return promisify(this.schema.query)({ id: { eq: id } })
   }
