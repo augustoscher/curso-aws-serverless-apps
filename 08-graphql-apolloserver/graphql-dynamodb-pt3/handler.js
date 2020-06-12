@@ -34,58 +34,58 @@ exports.handler = server.createHandler({
   },
 });
 
-async function main() {
-  console.log('creating factories...');
-  const skillFactory = await SkillFactory.createInstance();
-  const heroFactory = await HeroFactory.createInstance();
+// async function main() {
+//   console.log('creating factories...');
+//   const skillFactory = await SkillFactory.createInstance();
+//   const heroFactory = await HeroFactory.createInstance();
 
-  console.log('insert skill item...');
-  const skillId = `${new Date().getTime()}`;
-  await skillFactory.create({
-    id: skillId,
-    name: 'Mage',
-    value: 50
-  });
+//   console.log('insert skill item...');
+//   const skillId = `${new Date().getTime()}`;
+//   await skillFactory.create({
+//     id: skillId,
+//     name: 'Mage',
+//     value: 50
+//   });
 
-  console.log('getting skill');
-  const skill = await skillFactory.findOne(skillId)
-  console.log('Skill:', skill);
+//   console.log('getting skill');
+//   const skill = await skillFactory.findOne(skillId)
+//   console.log('Skill:', skill);
 
-  console.log('getting all skills');
-  const allSkills = await skillFactory.findAll()
-  console.log('all skills', allSkills);
+//   console.log('getting all skills');
+//   const allSkills = await skillFactory.findAll()
+//   console.log('all skills', allSkills);
 
-  console.log('\n-----------------\n')
+//   console.log('\n-----------------\n')
 
-  console.log('insert hero item...');
-  const heroId = `${new Date().getTime()}`;
-  await heroFactory.create({
-    id: heroId,
-    name: 'Doctor Strange',
-    skills: [skillId]
-  });
+//   console.log('insert hero item...');
+//   const heroId = `${new Date().getTime()}`;
+//   await heroFactory.create({
+//     id: heroId,
+//     name: 'Doctor Strange',
+//     skills: [skillId]
+//   });
 
-  console.log('getting hero');
-  const hero = await heroFactory.findOne(heroId);
-  console.log('Hero:', hero);
+//   console.log('getting hero');
+//   const hero = await heroFactory.findOne(heroId);
+//   console.log('Hero:', hero);
 
-  console.log('getting all heroes');
-  const allHeroes = await heroFactory.findAll()
-  console.log('all heroes', allHeroes);
+//   console.log('getting all heroes');
+//   const allHeroes = await heroFactory.findAll()
+//   console.log('all heroes', allHeroes);
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      hero: {
-        hero,
-        allHeroes
-      },
-      skill: {
-        skill,
-        allSkills
-      }
-    })
-  }
-}
+//   return {
+//     statusCode: 200,
+//     body: JSON.stringify({
+//       hero: {
+//         hero,
+//         allHeroes
+//       },
+//       skill: {
+//         skill,
+//         allSkills
+//       }
+//     })
+//   }
+// }
 
-module.exports.test = main;
+// module.exports.test = main;
