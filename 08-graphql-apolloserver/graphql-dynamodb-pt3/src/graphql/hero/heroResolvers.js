@@ -1,13 +1,13 @@
 const resolvers = {
   //GET
   Query: {
-    getHero(root, args, context, info) {
+    async getHero(root, args, context, info) {
       return 'Hello Word!'
     }
   },
   //POST (update, create, remove)
   Mutation: {
-    createHero(root, args, context, info) {
+    async createHero(root, args, context, info) {
       return 'Hello Word!'
     }
   }

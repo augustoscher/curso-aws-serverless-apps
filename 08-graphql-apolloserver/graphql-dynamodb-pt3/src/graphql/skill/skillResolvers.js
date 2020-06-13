@@ -1,13 +1,13 @@
 const resolvers = {
   //GET
   Query: {
-    getSkill(root, args, context, info) {
+    async getSkill(root, args, context, info) {
       return 'Hello Word!'
     }
   },
   //POST (update, create, remove)
   Mutation: {
-    createSkill(root, args, context, info) {
+    async createSkill(root, args, context, info) {
       return 'Hello Word!'
     }
   }
