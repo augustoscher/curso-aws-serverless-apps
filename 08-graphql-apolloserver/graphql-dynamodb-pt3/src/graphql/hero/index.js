@@ -1,4 +1,4 @@
 module.exports = {
   schema: require('./heroSchema'),
-  resolver: require('./heroResolvers')
+  resolvers: require('./heroResolvers')
 }
