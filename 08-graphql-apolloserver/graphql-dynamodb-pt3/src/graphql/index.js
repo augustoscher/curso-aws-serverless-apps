@@ -19,3 +19,7 @@ const schemas = readdirSync(__dirname)
       resolvers,
     })
   );
+
+module.exports = mergeSchemas({
+  schemas
+})
