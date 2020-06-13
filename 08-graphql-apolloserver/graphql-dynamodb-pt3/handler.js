@@ -15,6 +15,10 @@ const schema = require('./src/graphql')
  
 const server = new ApolloServer({
   schema,
+  context: async() => ({
+    Hero: await HeroFactory.createInstance(),
+    Skill: await SkillFactory.createInstance()
+  }),
   introspection: isLocal,
   playground: isLocal,
   formatError(error){

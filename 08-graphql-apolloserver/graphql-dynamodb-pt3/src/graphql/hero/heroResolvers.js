@@ -2,7 +2,8 @@ const resolvers = {
   //GET
   Query: {
     async getHero(root, args, context, info) {
-      return 'getting hero!'
+      console.log({ args });
+      return context.Hero.findAll(args)
     }
   },
   //POST (update, create, remove)

@@ -1,0 +1,17 @@
+{
+	getHero {
+    id
+    name
+    skills
+  } 
+}
+
+-------------
+
+{
+	getHero(id:"01", name:"Flash"){
+    id
+    name
+    skills
+  } 
+}
