@@ -17,6 +17,7 @@
     "serverless-offline": "^6.3.1"
   },
   "dependencies": {
+    "apollo-server-lambda": "^2.14.4",
     "dynamoose": "^1.11.1"
   }
 }
