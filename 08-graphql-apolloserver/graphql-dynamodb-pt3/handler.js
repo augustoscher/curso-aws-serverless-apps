@@ -8,29 +8,28 @@ setupDynamoDBClient();
 const HeroFactory = require('./src/core/factories/heroFactory');
 const SkillFactory = require('./src/core/factories/skillFactory');
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
- 
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-  },
-};
+const isLocal = process.env.IS_LOCAL;
+
+const schema = require('./src/graphql')
+
  
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema,
+  introspection: isLocal,
+  playground: isLocal,
+  formatError(error){
+    console.log('Global Error Logger: ', error);
+    return error;
+  },
+  formatResponse(response){
+    console.log('Global Response Logger: ', response);
+    return response;
+  }
 });
  
 exports.handler = server.createHandler({
   cors: {
     origin: '*',
-    credentials: true,
   },
 });
 
