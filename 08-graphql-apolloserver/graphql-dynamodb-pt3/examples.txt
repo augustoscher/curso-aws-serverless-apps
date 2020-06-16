@@ -19,3 +19,22 @@
 --------------
 
 createHero(name: "Batman", skills: ["01"])
+
+--------------
+
+{
+	getHero(id:"efb5f180-af7e-11ea-81f4-c5845f63122b"){
+		id
+		name
+		skills
+	} 
+  getSkill{
+  	name
+    value
+  }
+  getHero {
+  	id
+    name
+    skills
+  }
+}
