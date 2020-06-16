@@ -37,6 +37,8 @@ exports.handler = server.createHandler({
   },
 });
 
+
+
 // async function main() {
 //   console.log('creating factories...');
 //   const skillFactory = await SkillFactory.createInstance();

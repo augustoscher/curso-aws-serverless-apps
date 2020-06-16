@@ -15,3 +15,7 @@
     skills
   } 
 }
+
+--------------
+
+createHero(name: "Batman", skills: ["01"])

@@ -9,7 +9,8 @@ const resolvers = {
   //POST (update, create, remove)
   Mutation: {
     async createHero(root, args, context, info) {
-      return 'creating hero!'
+      const { id } = await context.Hero.create(args);
+      return id;
     }
   }
 }

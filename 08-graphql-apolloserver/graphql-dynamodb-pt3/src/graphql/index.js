@@ -14,7 +14,7 @@ const schemas = readdirSync(__dirname)
   .map(({ schema, resolvers }) =>
     makeExecutableSchema({
       //gql serve para validar a string do schema e retornar no formato
-      //Não é obrigatório, mas é recomenddoo
+      //Não é obrigatório, mas é recomendado
       typeDefs: gql(schema),
       resolvers,
     })
