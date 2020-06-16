@@ -2,13 +2,14 @@ const resolvers = {
   //GET
   Query: {
     async getSkill(root, args, context, info) {
-      return 'getting Skill!'
+      return context.Skill.findAll(args)
     }
   },
   //POST (update, create, remove)
   Mutation: {
     async createSkill(root, args, context, info) {
-      return 'creating Skill!'
+      const { id } = await context.Skill.create(args);
+      return id;
     }
   }
 }
