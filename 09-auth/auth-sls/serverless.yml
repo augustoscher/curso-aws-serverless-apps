@@ -3,6 +3,8 @@ service: auth-sls
 provider:
   name: aws
   runtime: nodejs12.x
+  environment:
+    JWT_KEY: abc123
 
 plugins:
   - serverless-offline

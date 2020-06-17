@@ -8,7 +8,7 @@ const login = async event => {
   const { username, password } = JSON.parse(event.body);
 
   const user = users.find(
-    usr =>
+    usr => 
       usr.username.toLowerCase() === username.toLowerCase() &&
       usr.password === password
   );
@@ -35,4 +35,4 @@ const login = async event => {
   }
 }
 
-module.exports = login;
+module.exports.handler = login;
