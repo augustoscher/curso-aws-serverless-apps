@@ -1,0 +1,37 @@
+service: auth-sls
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+plugins:
+  - serverless-offline
+
+
+functions:
+  heroes-public:
+    handler: src/getHeroes.public
+    events:
+      - http:
+          path: public
+          method: get
+          cors:
+              origins:
+                - '*'
+              headers:
+                - Content-Type
+                - Authorization
+
+  heroes-private:
+    handler: src/getHeroes.private
+    events:
+      - http:
+          path: private
+          method: get
+          cors:
+              origins:
+                - '*'
+              headers:
+                - Content-Type
+                - Authorization
+              
