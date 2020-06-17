@@ -9,6 +9,14 @@ plugins:
 
 
 functions:
+  login:
+    handler: src/login.handler
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
+
   heroes-public:
     handler: src/getHeroes.public
     events:
