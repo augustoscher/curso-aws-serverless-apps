@@ -13,11 +13,6 @@ plugins:
 functions:
   authorizerFunc:
     handler: src/authorizer.handler
-    events:
-      - http:
-          path: login
-          method: post
-          cors: true
 
   login:
     handler: src/login.handler
