@@ -20,6 +20,8 @@ module.exports.public = async event => {
 
 module.exports.private = async event => {
   console.log('Requesting private route...', new Date().toISOString());
+  console.log('User:', JSON.parse(event.requestContext.authorizer.user));
+
   return {
     statusCode: 200,
     body: JSON.stringify(

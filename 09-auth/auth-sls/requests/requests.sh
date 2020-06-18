@@ -17,4 +17,10 @@ echo
 
 curl --silent $HOST/dev/public | xargs echo "Public API: $1"
 
-curl --silent $HOST/dev/private | xargs echo "Private API: $1"
+curl \
+  --silent \
+  -H "Authorization:$TOKEN" \
+  $HOST/dev/private \
+  | xargs echo "Private API: $1"
+echo
+# curl --silent $HOST/dev/private | xargs echo "Private API: $1"
