@@ -2,11 +2,11 @@ const buildIAMPolicy = (userId, effect, resource, context) => {
   const policy = {
     principalId: userId,
     policyDocument: {
-      Statement: {
+      Statement: [{
         Action: "execute-api:Invoke",
         Effect: effect, //allow | deny
         Resource: resource, //arn
-      }
+      }]
     },
     context
   }

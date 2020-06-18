@@ -9,6 +9,8 @@
   {
     "username": "xunda",
     "password": "123",
-    "scopes": []
+    "scopes": [
+      "heroes.create"
+    ]
   }
 ]
