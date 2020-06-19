@@ -1,0 +1,9 @@
+component: website
+name: sls-landing-page
+stage: dev
+
+inputs:
+  src:
+    src: ./app
+    hook: npm run build
+    dist: ./app/build
