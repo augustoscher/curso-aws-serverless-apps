@@ -1,0 +1,43 @@
+
+service: api-management
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+  apiKeys:
+    - free: ${file(./default-customers.js):private}
+    - paid:
+       - myPaidKey
+       - zezinho@ze.com
+  usagePlan:
+    - free:
+        quota:
+          limit: 5 #5 reqs por mes
+          period: MONTH
+        throttle:
+          burstLimit: 200 #maior qtd de requests de uma unica vez
+          rateLimit: 200 #quantidade por segundo
+    - paid:
+      quota:
+        limit: 1000
+        period: DAY
+      throttle:
+        burstLimit: 400
+        rateLimit: 50
+
+package:
+  excludeDevDependencies: true #diminui bastante o tamanho do pacote
+
+plugins:
+  - serverless-offline
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+          private: true
