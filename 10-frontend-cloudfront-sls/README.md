@@ -2,6 +2,7 @@
 
 ## Requirements
 
+- AWS Account
 - Serverless Framework should be installed
 - Use npx create-react-app or install locally create-react-app
 
