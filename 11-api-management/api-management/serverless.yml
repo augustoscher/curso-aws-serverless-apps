@@ -41,3 +41,16 @@ functions:
           path: hello
           method: get
           private: true
+  getUsage:
+    handler: handler.usage
+    events:
+      - http:
+          path: getUsage
+          method: get
+  getUsagePlans:
+    handler: handler.usagePlans
+    events:
+      - http:
+          path: getUsagePlans
+          method: get
+        

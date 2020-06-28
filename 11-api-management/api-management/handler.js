@@ -1,18 +1,48 @@
-'use strict';
+"use strict";
+const AWS = require('aws-sdk');
+const apiGateway = new AWS.APIGateway();
+const moment = require('moment');
 
-module.exports.hello = async event => {
+const hello = async event => {
   return {
     statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Serverless API Key',
-        input: event,
-      },
-      null,
-      2
-    ),
+    body: "Hello Word",
   };
+};
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+const usage = async event => {
+  const {
+    from,
+    to,
+    usagePlanId,
+    keyId
+  } = event.queryStringParameters;
+
+  const usage = apiGateway.usage({
+    endDate: moment(to).format('YYYY-MM-DD'),
+    startDate: moment(from).format('YYYY-MM-DD'),
+    usagePlanId,
+    keyId
+  }).promise();
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify(usage, null, 2),
+  };
+};
+
+const usagePlans = async event => {
+  const result = await apiGateway.getUsagePlans().promise();
+  console.log('usage plans: ', result);
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify(result, 2, null)
+  };
+};
+
+module.exports = {
+  hello,
+  usage,
+  usagePlans
 };

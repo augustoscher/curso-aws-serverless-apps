@@ -10,6 +10,11 @@ curl --silent \
   -H "x-api-key: $APIKEY" \
   $HOST/dev/hello
 
+curl --silent \
+  $HOST/dev/getUsagePlans | tee requests/getUsagePlans.log
+
+
+
 echo
 echo "------------- PROD --------------"
 echo
