@@ -5,6 +5,13 @@ service: api-management
 provider:
   name: aws
   runtime: nodejs12.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - apigateway:GET
+        - apigateway:POST
+      Resource:
+        - arn:aws:apigateway:${self:provider.region}::/*
 
   apiKeys:
     - free: ${file(./default-customers.js):private}
