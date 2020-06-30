@@ -48,8 +48,20 @@ const addKey = async event => {
 
   console.log('received: ', { name, usagePlanId });
   const planKeys = await apiGateway.getUsagePlanKeys({ usagePlanId }).promise();
+  const { items: [{ type: keyType }] } = planKeys;
 
-  console.log('planKeys', planKeys);
+  const apiKeyCreated = await apiGateway.createApiKey({
+    name,
+    enabled: true
+  });
+  console.log('apiKeyCreated', apiKeyCreated);
+
+  //destructuring: pega a primeira posição do array e guarda no outro
+  const [apiKeyId, apiKeyToken] = [apiKeyCreated.id, apiKeyCreated.value];
+
+  const linkApiKey = await apiGateway.createUsagePlanKey({
+
+  });
 
   return {
     statusCode: 200,
