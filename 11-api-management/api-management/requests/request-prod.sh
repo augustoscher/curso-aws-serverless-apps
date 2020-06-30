@@ -59,3 +59,30 @@ done
 ## Get usage again
 curl --silent \
   "$HOST/dev/getUsage?keyId=$KEY_ID&usagePlanId=$USAGE_PLAN_ID&from=$FROM&to=$TO"
+
+# Return:
+# {
+#   "usagePlanId": "73lt09",
+#   "startDate": "2020-06-27",
+#   "endDate": "2020-06-30",
+#   "items": {
+#     "ewqydrrc1b": [
+#       [
+#         0,
+#         5
+#       ],
+#       [
+#         0,
+#         5
+#       ],
+#       [
+#         0,
+#         5
+#       ],
+#       [
+#         5,
+#         0
+#       ]
+#     ]
+#   }
+# }
