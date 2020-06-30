@@ -60,12 +60,22 @@ const addKey = async event => {
   const [apiKeyId, apiKeyToken] = [apiKeyCreated.id, apiKeyCreated.value];
 
   const linkApiKey = await apiGateway.createUsagePlanKey({
-
+    keyId: apiKeyId,
+    keyType,
+    usagePlanId
   });
+
+  console.log('API Key + Usage Plan Linked', linkApiKey);
+
+  const message = `Use ${apiKeyId} to check quota and 'x-api-key: ${apiKeyToken}' to make requests.`
 
   return {
     statusCode: 200,
-    body: JSON.stringify({}, null, 2)
+    body: JSON.stringify({
+      apiKeyToken,
+      apiKeyId,
+      message 
+    }, null, 2)
   };
 }
 
