@@ -53,7 +53,8 @@ const addKey = async event => {
   const apiKeyCreated = await apiGateway.createApiKey({
     name,
     enabled: true
-  });
+  }).promise();
+
   console.log('apiKeyCreated', apiKeyCreated);
 
   //destructuring: pega a primeira posição do array e guarda no outro
@@ -63,7 +64,7 @@ const addKey = async event => {
     keyId: apiKeyId,
     keyType,
     usagePlanId
-  });
+  }).promise();
 
   console.log('API Key + Usage Plan Linked', linkApiKey);
 
