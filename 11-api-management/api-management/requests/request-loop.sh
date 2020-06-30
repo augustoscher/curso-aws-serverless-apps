@@ -25,3 +25,9 @@ TO="2020-06-28"
 curl --silent \
   "$HOST/dev/getUsage?keyId=$KEY_ID&usagePlanId=$USAGE_PLAN_ID&from=$FROM&to=$TO" \
   | tee requests/usage.log
+
+
+CUSTOMER_NAME='augustoscher@gmail.com'
+curl --silent \
+  "$HOST_PROD/dev/addkey?name=$CUSTOMER_NAME&usagePlanId=$USAGE_PLAN_ID" \
+  | tee requests/addKey.log

@@ -60,4 +60,9 @@ functions:
       - http:
           path: getUsagePlans
           method: get
-        
+  addKey:
+    handler: handler.addKey
+    events:
+      - http:
+          path: addkey
+          method: get

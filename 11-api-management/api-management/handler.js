@@ -41,8 +41,25 @@ const usagePlans = async event => {
   };
 };
 
+const addKey = async event => {
+  const {
+    name, usagePlanId,
+  } = event.queryStringParameters;
+
+  console.log('received: ', { name, usagePlanId });
+  const planKeys = await apiGateway.getUsagePlanKeys({ usagePlanId }).promise();
+
+  console.log('planKeys', planKeys);
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({}, null, 2)
+  };
+}
+
 module.exports = {
   hello,
   usage,
-  usagePlans
+  usagePlans,
+  addKey,
 };
