@@ -1,0 +1,35 @@
+version: '2.1'
+
+services:
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: heroes
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+
+  app:
+    build: .
+    volumes:
+      - .:/src
+      - nodemodules:/src/node_modules
+    restart: on-failure
+    # command: yarn test
+    ports:
+      - 3000:3000
+    links:
+      - mysql
+    depends_on: 
+      - mysql
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: mysql
+      MYSQL_PASS: mysql
+      MYSQL_DATABASE: heroes
+
+volumes:
+  nodemodules: {}
