@@ -8,6 +8,14 @@ provider:
 plugins:
   - serverless-offline
 
+package:
+  excludeDevDependencies: true
+
 functions:
   hello:
-    handler: handler.hello
+    handler: src/index.handler
+    events:
+      - http:
+          method: any
+          path: hello
+

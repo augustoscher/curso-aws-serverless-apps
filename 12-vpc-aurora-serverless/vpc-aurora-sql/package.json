@@ -15,5 +15,10 @@
     "nodemon": "^2.0.4",
     "serverless": "^1.74.1",
     "serverless-offline": "^6.4.0"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.3"
   }
 }

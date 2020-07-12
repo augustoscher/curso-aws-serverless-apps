@@ -20,16 +20,16 @@ services:
     restart: on-failure
     # command: yarn test
     ports:
-      - 3000:3000
+        - 3000:3000
     links:
-      - mysql
+        - mysql
     depends_on: 
-      - mysql
+        - mysql
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_USER: mysql
-      MYSQL_PASS: mysql
-      MYSQL_DATABASE: heroes
+        MYSQL_HOST: mysql
+        MYSQL_USER: mysql
+        MYSQL_PASS: mysql
+        MYSQL_DATABASE: heroes
 
 volumes:
   nodemodules: {}
