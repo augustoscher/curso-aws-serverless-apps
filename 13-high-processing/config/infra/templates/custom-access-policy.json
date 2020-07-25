@@ -1,0 +1,31 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject",
+        "s3:ListObject"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::surveys-augustoscher-001",
+        "arn:aws:s3:::surveys-augustoscher-001/*"
+      ]
+    },
+    {
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::surveys-augustoscher-001/reports/*"
+    },
+    {
+      "Action": [
+        "ssm:GetParametersByPath"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:ssm:*:*:parameter/prod/process-data/"
+    }
+  ],
+  "Version": "2012-10-17"
+}
