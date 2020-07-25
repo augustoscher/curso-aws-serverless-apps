@@ -1,0 +1,21 @@
+{
+    "cluster": {
+        "clusterArn": "arn:aws:ecs:us-east-1:824273212766:cluster/serverless-project",
+        "clusterName": "serverless-project",
+        "status": "ACTIVE",
+        "registeredContainerInstancesCount": 0,
+        "runningTasksCount": 0,
+        "pendingTasksCount": 0,
+        "activeServicesCount": 0,
+        "statistics": [],
+        "tags": [],
+        "settings": [
+            {
+                "name": "containerInsights",
+                "value": "disabled"
+            }
+        ],
+        "capacityProviders": [],
+        "defaultCapacityProviderStrategy": []
+    }
+}
