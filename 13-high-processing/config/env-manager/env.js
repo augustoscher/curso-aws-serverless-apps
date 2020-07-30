@@ -1,6 +1,6 @@
 const clusterName = "serverless-project"
 const projectName = "serverless-project-01"
-const ssmPrefix = "/prod/serverless-project-01/"
+const ssmPrefix = "/prod/serverless-project-01"
 
 const variables = {
   ECS_TASK_DEFINITION: {
@@ -32,7 +32,7 @@ const variables = {
     type: "String"
   },
   ECS_TASK_SUBNETS: {
-    value = [
+    value: [
       "subnet-972b9fa9",
       "subnet-9183ecbf",
       "subnet-ccb3de90",
@@ -43,9 +43,9 @@ const variables = {
     type: "StringList"
   },
   ECS_TASK_SECURITY_GROUPS: {
-    value = [
+    value: [
       "sg-020a0f6774e30864d"
-    ],
+    ].join(','),
     type: "StringList"
   },
   ECS_TASK_ASSIGN_PUBLIC_IP: {
