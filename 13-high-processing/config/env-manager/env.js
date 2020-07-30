@@ -1,20 +1,84 @@
-// APP_NAME="process-data"
-// CLUSTER_NAME="serverless-project"
-// PROJECT_NAME="serverless-project-01"
-// REGION="us-east-1"
-// LOG_GROUP_NAME="/ecs/$PROJECT_NAME"
+const clusterName = "serverless-project"
+const projectName = "serverless-project-01"
+const ssmPrefix = "/prod/serverless-project-01/"
 
-// ECS_ROLE_NAME="ecsTaskExecutionRole"
-// ECS_ROLE_ARN="arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+const variables = {
+  ECS_TASK_DEFINITION: {
+    value: "process-data:1",
+    type: "String"
+  },  
+  ECS_CLUSTER_NAME: {
+    value: "serverless-project",
+    type: "String"
+  },  
+  ECS_TASK_LAUNCH_TYPE: {
+    value: "FARGATE",
+    type: "String"
+  },  
+  ECS_TASK_COUNT: {
+    value: "1",
+    type: "String"
+  },  
+  ECS_TASK_PLATFORM_VERSION: {
+    value: "LATEST",
+    type: "String"
+  },
+  ECS_TASK_CONTAINER_NAME: {
+    value: "process-data",
+    type: "String"
+  },
+  ECS_TASK_CONTAINER_FILE_ENV_NAME: {
+    value: "SURVEY_FILE",
+    type: "String"
+  },
+  ECS_TASK_SUBNETS: {
+    value = [
+      "subnet-972b9fa9",
+      "subnet-9183ecbf",
+      "subnet-ccb3de90",
+      "subnet-2ddcec67",
+      "subnet-7fa4c418",
+      "subnet-548dd75b"
+    ].join(','),
+    type: "StringList"
+  },
+  ECS_TASK_SECURITY_GROUPS: {
+    value = [
+      "sg-020a0f6774e30864d"
+    ],
+    type: "StringList"
+  },
+  ECS_TASK_ASSIGN_PUBLIC_IP: {
+    value: "ENABLED",
+    type: "String"
+  },
+  ECS_PROCESS_DATA_IMAGE_URL: {
+    value: "824273212766.dkr.ecr.us-east-1.amazonaws.com/process-data",
+    type: "String"
+  },
+  BUCKET_REPORTS: {
+    value: "reports",
+    type: "String"
+  },
+  LOG_GROUP_NAME: {
+    value: "/ecs/serverless-project-01",
+    type: "String"
+  },
+  SSM_PREFIX: {
+    value: ssmPrefix,
+    type: "String"
+  },
+  BUCKET_SURVEYS: {
+    value: "surveys-augustoscher-001",
+    type: "String"
+  },
+  REGION: {
+    value: "us-east-1",
+    type: "String"
+  }
+}
 
-// CUSTOM_POLICY_NAME="$APP_NAME"-policy
-// CUSTOM_POLICY_ARN="arn:aws:iam::824273212766:policy/process-data-policy"
-
-// ECR_URI_DOCKER="824273212766.dkr.ecr.us-east-1.amazonaws.com/process-data"
-// SSM_ENV_PATH="/prod/$PROJECT_NAME/"
-
-// TASK_DEFINITION_ARN="arn:aws:ecs:us-east-1:824273212766:task-definition/process-data:1"
-
-// VPC_ID="vpc-51c67a2b"
-// SECURITY_GROUP_NAME="$PROJECT_NAME"
-// GROUP_ID="sg-020a0f6774e30864d"
+module.exports = {
+  variables,
+  ssmPrefix
+}
