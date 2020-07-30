@@ -22,7 +22,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     }).promise();
 
     promises.push(result);
-    await sleep(500); //evitar rate limit no AWS SSM
+    await sleep(500); //evitar rate limit no AWS SM
   }
 
   const result = await Promise.all(promises);
