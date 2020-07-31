@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "csvtojson": "^2.0.10"
+    "aws-sdk": "^2.725.0",
+    "csvtojson": "^2.0.10",
+    "xlsx-chart": "^0.3.8"
   }
 }
