@@ -163,11 +163,11 @@ async function main() {
   console.log('finished at...', new Date().toISOString());
 }
 
-process.env.SURVEY_FILE = JSON.stringify({
-  Bucket: 'surveys-augustoscher-001',
-  Key: 'survey_results_public.csv'
-})
+// process.env.SURVEY_FILE = JSON.stringify({
+//   Bucket: 'surveys-augustoscher-001',
+//   Key: 'survey_results_public.csv'
+// });
 
-process.env.BUCKET_REPORTS = 'reports'
+// process.env.BUCKET_REPORTS = 'reports'
 
 main();
