@@ -24,7 +24,7 @@
         "ssm:GetParametersByPath"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:ssm:*:*:parameter/prod/curso-serverless01/"
+      "Resource": "*"
     }
   ],
   "Version": "2012-10-17"
