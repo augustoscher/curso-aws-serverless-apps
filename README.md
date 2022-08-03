@@ -20,8 +20,8 @@ Disclaimers:
 
 ### Image Analysis with Rekognition 
 
-![alt text](https://www.cachorroamigo.com/wp-content/uploads/2019/05/curiosidades-labrador-cachorroamigo-2-1200x900.jpg)
-GET https://drqa3kqxm2.execute-api.us-east-1.amazonaws.com/dev/analyse?imageUrl=https://www.cachorroamigo.com/wp-content/uploads/2019/05/curiosidades-labrador-cachorroamigo-2-1200x900.jpg
+https://drqa3kqxm2.execute-api.us-east-1.amazonaws.com/dev/analyse?https://cdn.pixabay.com/photo/2015/06/24/13/32/dog-820014_1280.jpg
+
 
 ```
 A imagem tem
