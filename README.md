@@ -1,5 +1,5 @@
 # AWS Serverless Apps
-Serverless Apps with AWS - Ew.IT
+Serverless Apps with AWS
 
 Good points:
 
