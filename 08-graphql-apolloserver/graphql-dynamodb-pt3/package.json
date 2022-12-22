@@ -14,7 +14,7 @@
     "nodemon": "^2.0.4",
     "serverless": "^1.72.0",
     "serverless-dynamodb-local": "^0.2.39",
-    "serverless-offline": "^6.3.1"
+    "serverless-offline": "^12.0.3"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.14.4",
